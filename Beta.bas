@@ -1,4 +1,4 @@
-Sub continuationLoopEXPLORER()
+Sub stockScrapeAlpha()
 
 'define ticker range
 
@@ -91,7 +91,6 @@ Wend
     
     'join those hundred into a single string string
     batch = Join(tickers, ",")
-    MsgBox batch
     
     'fetch the url
     Set MyRequest = CreateObject("WinHttp.WinHttpRequest.5.1")
@@ -126,7 +125,6 @@ If tickerRangeLen < 100 Then
     
     'join those hundred into a single string string
     batch = Join(tickers, ",")
-    MsgBox batch
     
     'fetch the url
     Set MyRequest = CreateObject("WinHttp.WinHttpRequest.5.1")
