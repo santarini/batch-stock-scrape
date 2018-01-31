@@ -9,7 +9,23 @@ Set tickerRange = Application.InputBox(prompt:="Select tickers", Type:=8)
 
 Dim tickerRangeLen As Integer
 tickerRangeLen = tickerRange.Cells.Count
-MsgBox tickerRangeLen
+Dim strtMsg As String
+strtMsg = MsgBox("Stock Scrape found " & tickerRangeLen & " tickers", vbOKCancel, "Ticker Count")
+
+Select Case strtMsg
+Case 2
+    Exit Sub
+Case 1
+
+'Perform this in the background, or not it's totally your choice
+
+Application.ScreenUpdating = False
+
+'define a timer, and start the timer
+
+Dim StartTime As Double
+Dim SecondsElapsed As Double
+  StartTime = Timer
 
 'define the top two ranges that both identify the first cell in the column
 
@@ -141,7 +157,12 @@ If tickerRangeLen < 100 Then
         Set Rng2 = ActiveCell
     Next
 End If
-
+SecondsElapsed = Round(Timer - StartTime, 2)
+'Notify user in seconds
+Dim tickersPerSec As Single
+tickersPerSec = (tickerRangeLen / SecondsElapsed)
+  MsgBox "This code ran successfully in " & SecondsElapsed & " seconds" & vbCrLf & "Approximately " & tickersPerSec & "per second", vbInformation
+End Select
 End Sub
 
 
