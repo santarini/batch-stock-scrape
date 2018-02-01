@@ -19,4 +19,4 @@ Here's a list of direct download links by exchange:
   <li><a href="http://www.nasdaq.com/screening/companies-by-industry.aspx?exchange=AMEX">AMEX</a></li>
 </ul>
 
-I also have an S & P 500 csv up here. (it may or may not be up-to-date), I haven't spent a lot of time working on the error handling, so if you run into a snag using this list it may because the ticker doesn't exist anymore.
+I also have an S & P 500 csv up here. (it may or may not be up-to-date), I haven't spent a lot of time working on the error handling, so if you run into a snag using this list it may because the ticker changed or doesn't exist or something.
