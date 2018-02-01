@@ -2,7 +2,7 @@
 
 This takes a list of tickers in a spreadsheet and populates a spreadsheet with that companies data points.
 
-Make sure you enable a reference to the Microsoft Scripting Runtime.
+Make sure you enable a Microsoft Scripting Runtime reference.
 
 ## Tickersets
 
