@@ -15,4 +15,4 @@ Here's a list of direct download links by exchange:
   <li><a href="http://www.nasdaq.com/screening/companies-by-industry.aspx?exchange=AMEX">AMEX</a></li>
 </ul>
 
-I also have an S & P 500 csv up here. (I dont keep it up-to-date).
+I also have an S & P 500 csv up here. (it may or may not be up-to-date).
