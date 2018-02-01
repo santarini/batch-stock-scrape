@@ -1,5 +1,7 @@
 # batch-stock-scrape
 
+Make sure you enable a reference to the Microsoft Scripting Runtime.
+
 ## Datasets
 
 The <a href="http://www.nasdaq.com/screening/company-list.aspx">NASDAQ website</a> does a great job of maintaining up-to-date CSVs containing all the tickers listed on the NYSE, NASDAQ, or AMEX.
