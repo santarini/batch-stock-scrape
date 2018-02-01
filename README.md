@@ -6,7 +6,7 @@ Make sure you enable a Microsoft Scripting Runtime reference.
 
 It varies in speed, the slowest I've see it go is around 3 companies per second, the fastest I've seen it go was a little 25 companies per second.
 
-I don't yet know why it varies so greatly in speed. Working on that.
+I don't yet know why it varies so greatly in speed. But I'm working on it.
 
 ## Tickersets
 
