@@ -9,9 +9,11 @@ Set tickerRange = Application.InputBox(prompt:="Select tickers", Type:=8)
 
 Dim tickerRangeLen As Integer
 tickerRangeLen = tickerRange.Cells.Count
+
+'Prompt count, if wrong you have a chance to cnacel routine.
+ 
 Dim strtMsg As String
 strtMsg = MsgBox("Stock Scrape found " & tickerRangeLen & " tickers", vbOKCancel, "Ticker Count")
-
 Select Case strtMsg
 Case 2
     Exit Sub
