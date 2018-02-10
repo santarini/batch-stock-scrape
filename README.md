@@ -9,7 +9,7 @@ Make sure you enable a Microsoft Scripting Runtime reference.
 
 ## Description
 
-This script takes a list of tickers in a spreadsheet and populates that same spreadsheet with that comapny's data points (price, technical indicators, fundamental indicators, financials, financial ratios, earnings, etc). Data points are taken from the JSON API of <a href="https://iextrading.com/">IEX Trading<a/> and are then parsed with VBA into the spreadsheet.
+This script takes a list of tickers in a spreadsheet and populates that same spreadsheet with that company's data points (price, technical indicators, fundamental indicators, financials, financial ratios, earnings, etc). Data points are taken from the JSON API of <a href="https://iextrading.com/">IEX Trading<a/> and are then parsed with VBA into the spreadsheet.
 
 It varies in speed, the slowest I've see it go is around 3 companies per second, the fastest I've seen it go was a little over 25 companies per second.
 
