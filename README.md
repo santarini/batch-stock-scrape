@@ -1,6 +1,6 @@
 # batch-stock-scrape
 
-##### alpha.bas
+#### alpha.bas
 Is the current working version of the program, and the only thing you need from the this repo.
   
 This script is dependent on a JSON parser. I would reccomend using <a href="https://github.com/VBA-tools/VBA-JSON">Tim Hall's JSON Converter</a>.
