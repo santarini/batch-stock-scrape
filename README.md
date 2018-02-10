@@ -3,6 +3,11 @@
 ## Description
 
 This takes a list of tickers in a spreadsheet and populates that same spreadsheet with that comapny's data points (price, technical indicators, fundamental indicators, financials, financial ratios, earnings, etc). Data points are taken from a JSON api hosted at <a href="https://iextrading.com/">IEX Trading<a/>, parsed with VBA into the spreadsheet.
+  
+  ###### alpha.bas
+  Is the current working version of the program, and the only thing you need from the this repo.
+  
+This script relies very heavily on a JSON parser. I would reccomend using <a>this</a> one.
 
 Make sure you enable a Microsoft Scripting Runtime reference.
 
