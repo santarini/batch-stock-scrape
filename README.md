@@ -1,15 +1,15 @@
 # batch-stock-scrape
 
-  ##### alpha.bas
-  Is the current working version of the program, and the only thing you need from the this repo.
+##### alpha.bas
+Is the current working version of the program, and the only thing you need from the this repo.
+  
+This script is dependent on a JSON parser. I would reccomend using <a href="https://github.com/VBA-tools/VBA-JSON">Tim Hall's JSON Converter</a>.
+
+Make sure you enable a Microsoft Scripting Runtime reference.
 
 ## Description
 
-This takes a list of tickers in a spreadsheet and populates that same spreadsheet with that comapny's data points (price, technical indicators, fundamental indicators, financials, financial ratios, earnings, etc). Data points are taken from the JSON API of <a href="https://iextrading.com/">IEX Trading<a/>, parsed with VBA into the spreadsheet.
-  
-This script relies very heavily on a JSON parser. I would reccomend using <a href="https://github.com/VBA-tools/VBA-JSON">Tim Hall's JSON Converter</a>.
-
-Make sure you enable a Microsoft Scripting Runtime reference.
+This script takes a list of tickers in a spreadsheet and populates that same spreadsheet with that comapny's data points (price, technical indicators, fundamental indicators, financials, financial ratios, earnings, etc). Data points are taken from the JSON API of <a href="https://iextrading.com/">IEX Trading<a/>, parsed with VBA into the spreadsheet.
 
 It varies in speed, the slowest I've see it go is around 3 companies per second, the fastest I've seen it go was a little over 25 companies per second.
 
