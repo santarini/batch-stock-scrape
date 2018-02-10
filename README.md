@@ -1,6 +1,6 @@
 # batch-stock-scrape
 
-This takes a list of tickers in a spreadsheet and populates a spreadsheet with that companies data points.
+This takes a list of tickers in a spreadsheet and populates that same spreadsheet with that comapny's data points (price, technical indicators, fundamental indicators, financials, financial ratios, earnings, etc). Data points are taken from a JSON api hosted at <a href="https://iextrading.com/">IEX Trading<a/>, parsed with VBA into the spreadsheet.
 
 Make sure you enable a Microsoft Scripting Runtime reference.
 
@@ -19,4 +19,7 @@ Here's a list of direct download links by exchange:
   <li><a href="https://www.nasdaq.com/screening/companies-by-name.aspx?letter=0&exchange=amex&render=download">AMEX</a></li>
 </ul>
 
-I also have a <a href="https://github.com/santarini/batch-stock-scrape/blob/master/sandp500.csv">S & P 500 csv</a> up here. It may or may not be up-to-date), I haven't spent a lot of time working on error handling, so if you run into a snag using this list it may because the ticker changed or doesn't exist or something.
+I also have a <a href="https://github.com/santarini/batch-stock-scrape/blob/master/sandp500.csv">S&P 500 csv</a> up here. It may or may not be up-to-date), I haven't spent a lot of time working on error handling, so if you run into a snag using this list it may because the ticker changed or doesn't exist or something.
+
+## Errors
+Some tickers have fancy characters, like 
