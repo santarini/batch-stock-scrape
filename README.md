@@ -29,7 +29,7 @@ Here's a list of direct download links by exchange:
 I also have a <a href="https://github.com/santarini/batch-stock-scrape/blob/master/sandp500.csv">S&P 500 csv</a> up here. It may or may not be up-to-date), I haven't spent a lot of time working on error handling, so if you run into a snag using this list it may because the ticker changed or doesn't exist or something.
 
 ## Errors
-Some tickers have *fancy characters*, for example on the NYSE, (BAC) Bank of America has tickers like BAC^A and BAC.WS.A, in it's current state this program will likely fatal out upon encountering tickers with *fancy characters*.
+Some tickers have *fancy characters* -- for example on the NYSE, (BAC) Bank of America has tickers like BAC^A and BAC.WS.A -- in it's current state this program will likely fatal out upon encountering tickers with *fancy characters*.
 
 ## License
 
