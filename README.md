@@ -30,3 +30,7 @@ I also have a <a href="https://github.com/santarini/batch-stock-scrape/blob/mast
 
 ## Errors
 Some tickers have *fancy characters*, for example on the NYSE, (BAC) Bank of America has tickers like BAC^A and BAC.WS.A, in it's current state this program will likely fatal out upon encountering tickers with *fancy characters*.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE.md file for details
