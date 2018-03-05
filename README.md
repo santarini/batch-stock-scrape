@@ -1,4 +1,4 @@
-# batch-stock-scrape
+# Batch Stock Scrape
 
 #### alpha.bas
 Is the current working version of the program and the only thing you really need from this repo.
