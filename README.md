@@ -35,4 +35,4 @@ Some tickers have *fancy characters* -- for example on the NYSE, (BAC) Bank of A
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
-The <a href="https://github.com/santarini/batch-stock-scrape/blob/master/JsonConverter.bas">JsonConverter.bas<a/> was included in this repo for the sake of simplicity. It was taken directly from <a href="https://github.com/VBA-tools/VBA-JSON">Tim Hall</a>'s GitHub (<a href="https://github.com/VBA-tools/VBA-JSON/blob/master/JsonConverter.bas">here</a>). At the top of the file I've maintained the original license.
+The <a href="https://github.com/santarini/batch-stock-scrape/blob/master/JsonConverter.bas">JsonConverter.bas<a/> was included in this repo for the sake of simplicity. IT IS NOT INCLUDED UNDER MY MIT LICENSES. At the top of the file I've maintained it's original license. It was taken directly from <a href="https://github.com/VBA-tools/VBA-JSON">Tim Hall</a>'s GitHub (<a href="https://github.com/VBA-tools/VBA-JSON/blob/master/JsonConverter.bas">here</a>).
