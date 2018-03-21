@@ -261,6 +261,12 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
     Rng2.Offset(0, 11).Value = Format(high, "Currency")
     Rng2.Offset(0, 12).Value = Format(change, "Currency")
     Rng2.Offset(0, 13).Value = Format(changePercent, "Percent")
+        If changePercent > 0 Then
+            Rng2.Offset(0, 13).Font.ColorIndex = 4
+        End If
+        If changePercent < 0 Then
+            Rng2.Offset(0, 13).Font.ColorIndex = 3
+        End If
     Rng2.Offset(0, 14).Value = Format(latestVolume, "#,##0")
     Rng2.Offset(0, 15).Value = Format(avgTotalVolume, "#,##0")
     Rng2.Offset(0, 16).Value = Format(week52Low, "Currency")
@@ -268,13 +274,61 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
     Rng2.Offset(0, 18).Value = Format(day50MovingAvg, "Currency")
     Rng2.Offset(0, 19).Value = Format(day200MovingAvg, "Currency")
     Rng2.Offset(0, 20).Value = Format(day5ChangePercent, "Percent")
+        If day5ChangePercent > 0 Then
+            Rng2.Offset(0, 20).Font.ColorIndex = 4
+        End If
+        If day5ChangePercent < 0 Then
+            Rng2.Offset(0, 20).Font.ColorIndex = 3
+        End If
     Rng2.Offset(0, 21).Value = Format(month1ChangePercent, "Percent")
+        If month1ChangePercent > 0 Then
+            Rng2.Offset(0, 21).Font.ColorIndex = 4
+        End If
+        If month1ChangePercent < 0 Then
+            Rng2.Offset(0, 21).Font.ColorIndex = 3
+        End If
     Rng2.Offset(0, 22).Value = Format(month3ChangePercent, "Percent")
+        If month3ChangePercent > 0 Then
+            Rng2.Offset(0, 22).Font.ColorIndex = 4
+        End If
+        If month3ChangePercent < 0 Then
+            Rng2.Offset(0, 22).Font.ColorIndex = 3
+        End If
     Rng2.Offset(0, 23).Value = Format(month6ChangePercent, "Percent")
+        If month6ChangePercent > 0 Then
+            Rng2.Offset(0, 23).Font.ColorIndex = 4
+        End If
+        If month6ChangePercent < 0 Then
+            Rng2.Offset(0, 23).Font.ColorIndex = 3
+        End If
     Rng2.Offset(0, 24).Value = Format(ytdChangePercent, "Percent")
+        If ytdChangePercent > 0 Then
+            Rng2.Offset(0, 24).Font.ColorIndex = 4
+        End If
+        If ytdChangePercent < 0 Then
+            Rng2.Offset(0, 24).Font.ColorIndex = 3
+        End If
     Rng2.Offset(0, 25).Value = Format(year1ChangePercent, "Percent")
+        If year1ChangePercent > 0 Then
+            Rng2.Offset(0, 25).Font.ColorIndex = 4
+        End If
+        If year1ChangePercent < 0 Then
+            Rng2.Offset(0, 25).Font.ColorIndex = 3
+        End If
     Rng2.Offset(0, 26).Value = Format(year3ChangePercent, "Percent")
+        If year3ChangePercent > 0 Then
+            Rng2.Offset(0, 26).Font.ColorIndex = 4
+        End If
+        If year3ChangePercent < 0 Then
+            Rng2.Offset(0, 26).Font.ColorIndex = 3
+        End If
     Rng2.Offset(0, 27).Value = Format(year5ChangePercent, "Percent")
+        If year5ChangePercent > 0 Then
+            Rng2.Offset(0, 27).Font.ColorIndex = 4
+        End If
+        If year5ChangePercent < 0 Then
+            Rng2.Offset(0, 27).Font.ColorIndex = 3
+        End If
     Rng2.Offset(0, 28).Value = Format(beta, "Standard")
     Rng2.Offset(0, 29).Value = Format(marketcap, "Currency")
     Rng2.Offset(0, 30).Value = Format(sharesOutstanding, "#,##0")
