@@ -11,7 +11,7 @@ I don't yet know why it varies so greatly in speed. But ... I'll spend some time
 #### alpha.bas
 Is the current working version of the program and the only thing you really need from this repo.
   
-This script is dependent on a JSON parser. I would reccomend using <a href="https://github.com/VBA-tools/VBA-JSON">Tim Hall's JSON Converter</a>, which I've included in this repo. See the License section below for more details.
+This script is dependent on a JSON parser. I would reccomend using <a href="https://github.com/VBA-tools/VBA-JSON">Tim Hall's JSON Converter</a>, which I've included in this repo with permission. See the License section below for more details.
 
 Make sure you enable a Microsoft Scripting Runtime and Microsoft Active X Data Object Library.
 
@@ -35,4 +35,4 @@ Some tickers have *fancy characters* -- for example on the NYSE, (BAC) Bank of A
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
-The <a href="https://github.com/santarini/batch-stock-scrape/blob/master/JsonConverter.bas">JsonConverter.bas<a/> was included in this repo for the sake of simplicity. <b>JsonConverter.bas IS NOT INCLUDED UNDER MY MIT LICENSE</b>. At the top of the file I've maintained it's original license. It was taken directly from <a href="https://github.com/VBA-tools/VBA-JSON">Tim Hall</a>'s GitHub (<a href="https://github.com/VBA-tools/VBA-JSON/blob/master/JsonConverter.bas">here</a>).
+The <a href="https://github.com/santarini/batch-stock-scrape/blob/master/JsonConverter.bas">JsonConverter.bas<a/> was included in this repo with permission for the sake of simplicity. <b>JsonConverter.bas IS NOT INCLUDED UNDER MY MIT LICENSE</b>. At the top of the file I've maintained it's original license. It was taken directly from <a href="https://github.com/VBA-tools/VBA-JSON">Tim Hall</a>'s GitHub (<a href="https://github.com/VBA-tools/VBA-JSON/blob/master/JsonConverter.bas">here</a>).
