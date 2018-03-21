@@ -2,7 +2,7 @@
 
 This script takes a list of tickers in a spreadsheet and populates that same spreadsheet with that company's data points (price, technical indicators, fundamental indicators, financials, financial ratios, earnings, etc). Data points are taken from the JSON API of <a href="https://iextrading.com/">IEX Trading<a/> and are then parsed with VBA into the spreadsheet.
 
-It varies in speed, the slowest I've see it go is around 3 companies per second, the fastest I've seen it go was a little over 25 companies per second.
+It varies in speed, the slowest I've see it go is around 3 companies per second, the fastest I've seen it go was a little over 42 companies per second.
 
 I don't yet know why it varies so greatly in speed. But ... I'll spend some time on that later.
 
