@@ -29,6 +29,8 @@ Dim StartTime As Double
 Dim SecondsElapsed As Double
   StartTime = Timer
 
+Call createTemplate
+
 'define the top two ranges that both identify the first cell in the column
 
 Dim Rng1 As Range
@@ -159,6 +161,11 @@ If tickerRangeLen < 100 Then
         Set Rng2 = ActiveCell
     Next
 End If
+
+Cells.Select
+Selection.Columns.AutoFit
+Range("A1").Select
+
 SecondsElapsed = Round(Timer - StartTime, 2)
 'Notify user in seconds
 Dim tickersPerSec As Single
@@ -318,5 +325,88 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
         Rng2.Offset(0, 75).Value = recordDate
         Rng2.Offset(0, 76).Value = qualified
         Rng2.Offset(1, 0).Select
+
+End Function
+Function createTemplate()
+
+Range("B1").Value = "Company Name"
+Range("C1").Value = "Exchange "
+Range("D1").Value = "Sector"
+Range("E1").Value = "Industry"
+Range("F1").Value = "CEO"
+Range("G1").Value = "Issue Type"
+Range("H1").Value = "Latest Price"
+Range("I1").Value = "Open Price"
+Range("J1").Value = "Close Price"
+Range("K1").Value = "Low"
+Range("L1").Value = "High"
+Range("M1").Value = "Change"
+Range("N1").Value = "Change Percent"
+Range("O1").Value = "Latest Volume"
+Range("P1").Value = "Avgtotal Total Volume"
+Range("Q1").Value = "Week 52 Low"
+Range("R1").Value = "Week 52 High"
+Range("S1").Value = "50 Day Moving Avg"
+Range("T1").Value = "200 Day Moving Avg"
+Range("U1").Value = "5 Day Change Percent"
+Range("V1").Value = "1 Month Change Percent"
+Range("W1").Value = "3 Month Change Percent"
+Range("X1").Value = "6 Month Change Percent"
+Range("Y1").Value = "YTD Change Percent"
+Range("Z1").Value = "1 Year Change Percent"
+Range("AA1").Value = "3 Year Change Percent"
+Range("AB1").Value = "5 Year Change Percent"
+Range("AC1").Value = "Beta"
+Range("AD1").Value = "Marketcap"
+Range("AE1").Value = "Shares Outstanding"
+Range("AF1").Value = "Float"
+Range("AG1").Value = "Revenue"
+Range("AH1").Value = "Revenue per Per Share"
+Range("AI1").Value = "Revenue per Per Employee"
+Range("AJ1").Value = "EBITDA"
+Range("AK1").Value = "Gross Profit"
+Range("AL1").Value = "Profit Margin"
+Range("AM1").Value = "Cash"
+Range("AN1").Value = "Debt"
+Range("AO1").Value = "Return On Equity"
+Range("AP1").Value = "Return On Assets"
+Range("AQ1").Value = "Return On Capital"
+Range("AR1").Value = "P/E Ratio"
+Range("AS1").Value = "P/E Ratio Low"
+Range("AT1").Value = "P/E Ratio High"
+Range("AU1").Value = "Price To Sales"
+Range("AV1").Value = "Price To Book"
+Range("AW1").Value = "Short Ratio"
+Range("AX1").Value = "Gross Profit"
+Range("AY1").Value = "Costof Of Revenue"
+Range("AZ1").Value = "Opearting Revenue"
+Range("BA1").Value = "Total Revenue"
+Range("BB1").Value = "Opearting Income"
+Range("BC1").Value = "Net Income"
+Range("BD1").Value = "Research and Development"
+Range("BE1").Value = "Opearting Expenses"
+Range("BF1").Value = "Current Assets"
+Range("BG1").Value = "Total Assets"
+Range("BH1").Value = "Total Liabilities"
+Range("BI1").Value = "Current Cash"
+Range("BJ1").Value = "Current Debt"
+Range("BK1").Value = "Total Cash"
+Range("BL1").Value = "Total Debt"
+Range("BM1").Value = "Shareholder Equity"
+Range("BN1").Value = "Cash Change"
+Range("BO1").Value = "Cash Flow"
+Range("BP1").Value = "Operating Gains Losses"
+Range("BQ1").Value = "Amount"
+Range("BR1").Value = "Dividend Type"
+Range("BS1").Value = "Dividend Rate"
+Range("BT1").Value = "Dividend Yield"
+Range("BU1").Value = "Ex Date"
+Range("BV1").Value = "Payment Date"
+Range("BW1").Value = "Declared Date"
+Range("BX1").Value = "Record Date"
+Range("BY1").Value = "Qualified"
+Range("A1:BY1").Select
+Selection.Font.Bold = True
+Range("A1").Select
 
 End Function
