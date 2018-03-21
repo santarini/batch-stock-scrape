@@ -170,7 +170,7 @@ SecondsElapsed = Round(Timer - StartTime, 2)
 'Notify user in seconds
 Dim tickersPerSec As Single
 tickersPerSec = (tickerRangeLen / SecondsElapsed)
-  MsgBox "This code ran successfully in " & SecondsElapsed & " seconds" & vbCrLf & "Approximately " & tickersPerSec & "per second", vbInformation
+  MsgBox "This code ran successfully in " & SecondsElapsed & " seconds" & vbCrLf & "Approximately " & tickersPerSec & " per second", vbInformation
 End Select
 End Sub
 
@@ -179,14 +179,17 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
 
     Dim companyName, exchange, sector, industry, CEO, issueType, dividendType As Variant
     Dim latestPrice, openPrice, closePrice, low, high, change, changePercent, latestVolume, avgTotalVolume, week52Low, week52High, day50MovingAvg, day200MovingAvg, day5ChangePercent, month1ChangePercent, month3ChangePercent, month6ChangePercent, ytdChangePercent, year1ChangePercent, year3ChangePercent, year5ChangePercent, beta, marketcap, sharesOutstanding, float, revenue, revenuePerShare, revenuePerEmployee, EBITDA, grossProfit, profitMargin, cash, debt, returnOnEquity, returnOnAssets, returnOnCapital, peRatio, peRatioLow, peRatioHigh, priceToSales, priceToBook, shortRatio, costOfRevenue, opeartingRevenue, totalRevenue, opeartingIncome, netIncome, researchAndDevelopment, opeartingExpenses, currentAssets, totalAssets, totalLiabilities, currentCash, currentDebt, totalCash, totalDebt, shareholderEquity, cashChange, cashFlow, operatingGainsLosses, amount, dividendRate, dividendYield As Variant
-    Dim exDate, paymentDate, declaredDate, recordDate, reportDate As Variant
+    Dim exDate, paymentDate, declaredDate, recordDate, reportDate, latestTime, website, description As Variant
         
         companyName = Json(Dict.Item("A"))("company")("companyName")
+        website = Json(Dict.Item("A"))("company")("website")
+        description = Json(Dict.Item("A"))("company")("description")
         exchange = Json(Dict.Item("A"))("company")("exchange")
         sector = Json(Dict.Item("A"))("company")("sector")
         industry = Json(Dict.Item("A"))("company")("industry")
         CEO = Json(Dict.Item("A"))("company")("CEO")
         issueType = Json(Dict.Item("A"))("company")("issueType")
+        latestTime = Json(Dict.Item("A"))("quote")("latestTime")
         latestPrice = Json(Dict.Item("A"))("quote")("latestPrice")
         openPrice = Json(Dict.Item("A"))("quote")("open")
         closePrice = Json(Dict.Item("A"))("quote")("close")
@@ -270,79 +273,79 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
                 Rng2.Offset(0, 13).Font.ColorIndex = 1
             End If
         Rng2.Offset(0, 14).Value = Format(latestVolume, "#,##0")
-        Rng2.Offset(0, 15).Value = Format(avgTotalVolume, "#,##0")
-        Rng2.Offset(0, 16).Value = Format(week52Low, "Currency")
-        Rng2.Offset(0, 17).Value = Format(week52High, "Currency")
-        Rng2.Offset(0, 18).Value = Format(day50MovingAvg, "Currency")
-        Rng2.Offset(0, 19).Value = Format(day200MovingAvg, "Currency")
-        Rng2.Offset(0, 20).Value = Format(day5ChangePercent, "Percent")
+        Rng2.Offset(0, 15).Value = beta
+        Rng2.Offset(0, 16).Value = Format(marketcap, "Currency")
+        Rng2.Offset(0, 17).Value = Format(sharesOutstanding, "#,##0")
+        Rng2.Offset(0, 18).Value = Format(float, "#,##0")
+        Rng2.Offset(0, 19).Value = Format(avgTotalVolume, "#,##0")
+        Rng2.Offset(0, 20).Value = Format(week52Low, "Currency")
+        Rng2.Offset(0, 21).Value = Format(week52High, "Currency")
+        Rng2.Offset(0, 22).Value = Format(day50MovingAvg, "Currency")
+        Rng2.Offset(0, 23).Value = Format(day200MovingAvg, "Currency")
+        Rng2.Offset(0, 24).Value = Format(day5ChangePercent, "Percent")
             If day5ChangePercent > 0 Then
-                Rng2.Offset(0, 20).Font.ColorIndex = 10
-            ElseIf day5ChangePercent < 0 Then
-                Rng2.Offset(0, 20).Font.ColorIndex = 3
-            Else
-                Rng2.Offset(0, 20).Font.ColorIndex = 1
-            End If
-        Rng2.Offset(0, 21).Value = Format(month1ChangePercent, "Percent")
-            If month1ChangePercent > 0 Then
-                Rng2.Offset(0, 21).Font.ColorIndex = 10
-            ElseIf month1ChangePercent < 0 Then
-                Rng2.Offset(0, 21).Font.ColorIndex = 3
-            Else
-                Rng2.Offset(0, 21).Font.ColorIndex = 1
-            End If
-        Rng2.Offset(0, 22).Value = Format(month3ChangePercent, "Percent")
-            If month3ChangePercent > 0 Then
-                Rng2.Offset(0, 22).Font.ColorIndex = 10
-            ElseIf month3ChangePercent < 0 Then
-                Rng2.Offset(0, 22).Font.ColorIndex = 3
-            Else
-                Rng2.Offset(0, 22).Font.ColorIndex = 1
-            End If
-        Rng2.Offset(0, 23).Value = Format(month6ChangePercent, "Percent")
-            If month6ChangePercent > 0 Then
-                Rng2.Offset(0, 23).Font.ColorIndex = 10
-            ElseIf month6ChangePercent < 0 Then
-                Rng2.Offset(0, 23).Font.ColorIndex = 3
-            Else
-                Rng2.Offset(0, 23).Font.ColorIndex = 1
-            End If
-        Rng2.Offset(0, 24).Value = Format(ytdChangePercent, "Percent")
-            If ytdChangePercent > 0 Then
                 Rng2.Offset(0, 24).Font.ColorIndex = 10
-            ElseIf ytdChangePercent < 0 Then
+            ElseIf day5ChangePercent < 0 Then
                 Rng2.Offset(0, 24).Font.ColorIndex = 3
             Else
                 Rng2.Offset(0, 24).Font.ColorIndex = 1
             End If
-        Rng2.Offset(0, 25).Value = Format(year1ChangePercent, "Percent")
-            If year1ChangePercent > 0 Then
+        Rng2.Offset(0, 25).Value = Format(month1ChangePercent, "Percent")
+            If month1ChangePercent > 0 Then
                 Rng2.Offset(0, 25).Font.ColorIndex = 10
-            ElseIf year1ChangePercent < 0 Then
+            ElseIf month1ChangePercent < 0 Then
                 Rng2.Offset(0, 25).Font.ColorIndex = 3
             Else
                 Rng2.Offset(0, 25).Font.ColorIndex = 1
             End If
-        Rng2.Offset(0, 26).Value = Format(year2ChangePercent, "Percent")
-            If year2ChangePercent > 0 Then
+        Rng2.Offset(0, 26).Value = Format(month3ChangePercent, "Percent")
+            If month3ChangePercent > 0 Then
                 Rng2.Offset(0, 26).Font.ColorIndex = 10
-            ElseIf year2ChangePercent < 0 Then
+            ElseIf month3ChangePercent < 0 Then
                 Rng2.Offset(0, 26).Font.ColorIndex = 3
             Else
                 Rng2.Offset(0, 26).Font.ColorIndex = 1
             End If
-        Rng2.Offset(0, 27).Value = Format(year5ChangePercent, "Percent")
-            If year5ChangePercent > 0 Then
+        Rng2.Offset(0, 27).Value = Format(month6ChangePercent, "Percent")
+            If month6ChangePercent > 0 Then
                 Rng2.Offset(0, 27).Font.ColorIndex = 10
-            ElseIf year5ChangePercent < 0 Then
+            ElseIf month6ChangePercent < 0 Then
                 Rng2.Offset(0, 27).Font.ColorIndex = 3
             Else
                 Rng2.Offset(0, 27).Font.ColorIndex = 1
             End If
-        Rng2.Offset(0, 28).Value = Format(beta, "Standard")
-        Rng2.Offset(0, 29).Value = Format(marketcap, "Currency")
-        Rng2.Offset(0, 30).Value = Format(sharesOutstanding, "#,##0")
-        Rng2.Offset(0, 31).Value = Format(float, "#,##0")
+        Rng2.Offset(0, 28).Value = Format(ytdChangePercent, "Percent")
+            If ytdChangePercent > 0 Then
+                Rng2.Offset(0, 28).Font.ColorIndex = 10
+            ElseIf ytdChangePercent < 0 Then
+                Rng2.Offset(0, 28).Font.ColorIndex = 3
+            Else
+                Rng2.Offset(0, 28).Font.ColorIndex = 1
+            End If
+        Rng2.Offset(0, 29).Value = Format(year1ChangePercent, "Percent")
+            If year1ChangePercent > 0 Then
+                Rng2.Offset(0, 29).Font.ColorIndex = 10
+            ElseIf year1ChangePercent < 0 Then
+                Rng2.Offset(0, 29).Font.ColorIndex = 3
+            Else
+                Rng2.Offset(0, 29).Font.ColorIndex = 1
+            End If
+        Rng2.Offset(0, 30).Value = Format(year2ChangePercent, "Percent")
+            If year2ChangePercent > 0 Then
+                Rng2.Offset(0, 30).Font.ColorIndex = 10
+            ElseIf year2ChangePercent < 0 Then
+                Rng2.Offset(0, 30).Font.ColorIndex = 3
+            Else
+                Rng2.Offset(0, 30).Font.ColorIndex = 1
+            End If
+        Rng2.Offset(0, 31).Value = Format(year5ChangePercent, "Percent")
+            If year5ChangePercent > 0 Then
+                Rng2.Offset(0, 31).Font.ColorIndex = 10
+            ElseIf year5ChangePercent < 0 Then
+                Rng2.Offset(0, 31).Font.ColorIndex = 3
+            Else
+                Rng2.Offset(0, 31).Font.ColorIndex = 1
+            End If
         Rng2.Offset(0, 32).Value = Format(revenue, "Currency")
         Rng2.Offset(0, 33).Value = Format(revenuePerShare, "Currency")
         Rng2.Offset(0, 34).Value = Format(revenuePerEmployee, "Currency")
@@ -415,23 +418,23 @@ Range("L1").Value = "High"
 Range("M1").Value = "Change"
 Range("N1").Value = "Change Percent"
 Range("O1").Value = "Latest Volume"
-Range("P1").Value = "Avg Total Volume"
-Range("Q1").Value = "Week 52 Low"
-Range("R1").Value = "Week 52 High"
-Range("S1").Value = "50 Day Moving Avg"
-Range("T1").Value = "200 Day Moving Avg"
-Range("U1").Value = "5 Day Change Percent"
-Range("V1").Value = "1 Month Change Percent"
-Range("W1").Value = "3 Month Change Percent"
-Range("X1").Value = "6 Month Change Percent"
-Range("Y1").Value = "YTD Change Percent"
-Range("Z1").Value = "1 Year Change Percent"
-Range("AA1").Value = "2 Year Change Percent"
-Range("AB1").Value = "5 Year Change Percent"
-Range("AC1").Value = "Beta"
-Range("AD1").Value = "Marketcap"
-Range("AE1").Value = "Shares Outstanding"
-Range("AF1").Value = "Float"
+Range("P1").Value = "Beta"
+Range("Q1").Value = "Marketcap"
+Range("R1").Value = "Shares Outstanding"
+Range("S1").Value = "Float"
+Range("T1").Value = "Avg Total Volume"
+Range("U1").Value = "Week 52 Low"
+Range("V1").Value = "Week 52 High"
+Range("W1").Value = "50 Day Moving Avg"
+Range("X1").Value = "200 Day Moving Avg"
+Range("Y1").Value = "5 Day Change Percent"
+Range("Z1").Value = "1 Month Change Percent"
+Range("AA1").Value = "3 Month Change Percent"
+Range("AB1").Value = "6 Month Change Percent"
+Range("AC1").Value = "YTD Change Percent"
+Range("AD1").Value = "1 Year Change Percent"
+Range("AE1").Value = "2 Year Change Percent"
+Range("AF1").Value = "5 Year Change Percent"
 Range("AG1").Value = "Revenue"
 Range("AH1").Value = "Revenue Per Share"
 Range("AI1").Value = "Revenue Per Employee"
