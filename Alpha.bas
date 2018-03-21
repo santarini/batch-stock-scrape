@@ -206,7 +206,7 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
         month6ChangePercent = Json(Dict.Item("A"))("stats")("month6ChangePercent")
         ytdChangePercent = Json(Dict.Item("A"))("stats")("ytdChangePercent")
         year1ChangePercent = Json(Dict.Item("A"))("stats")("year1ChangePercent")
-        year3ChangePercent = Json(Dict.Item("A"))("stats")("year3ChangePercent")
+        year2ChangePercent = Json(Dict.Item("A"))("stats")("year2ChangePercent")
         year5ChangePercent = Json(Dict.Item("A"))("stats")("year5ChangePercent")
         beta = Json(Dict.Item("A"))("stats")("beta")
         marketcap = Json(Dict.Item("A"))("stats")("marketcap")
@@ -323,10 +323,10 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
             Else
                 Rng2.Offset(0, 25).Font.ColorIndex = 1
             End If
-        Rng2.Offset(0, 26).Value = Format(year3ChangePercent, "Percent")
-            If year3ChangePercent > 0 Then
+        Rng2.Offset(0, 26).Value = Format(year2ChangePercent, "Percent")
+            If year2ChangePercent > 0 Then
                 Rng2.Offset(0, 26).Font.ColorIndex = 10
-            ElseIf year3ChangePercent < 0 Then
+            ElseIf year2ChangePercent < 0 Then
                 Rng2.Offset(0, 26).Font.ColorIndex = 3
             Else
                 Rng2.Offset(0, 26).Font.ColorIndex = 1
@@ -426,7 +426,7 @@ Range("W1").Value = "3 Month Change Percent"
 Range("X1").Value = "6 Month Change Percent"
 Range("Y1").Value = "YTD Change Percent"
 Range("Z1").Value = "1 Year Change Percent"
-Range("AA1").Value = "3 Year Change Percent"
+Range("AA1").Value = "2 Year Change Percent"
 Range("AB1").Value = "5 Year Change Percent"
 Range("AC1").Value = "Beta"
 Range("AD1").Value = "Marketcap"
