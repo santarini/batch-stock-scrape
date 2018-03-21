@@ -179,7 +179,7 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
 
     Dim companyName, exchange, sector, industry, CEO, issueType, dividendType As Variant
     Dim latestPrice, openPrice, closePrice, low, high, change, changePercent, latestVolume, avgTotalVolume, week52Low, week52High, day50MovingAvg, day200MovingAvg, day5ChangePercent, month1ChangePercent, month3ChangePercent, month6ChangePercent, ytdChangePercent, year1ChangePercent, year3ChangePercent, year5ChangePercent, beta, marketcap, sharesOutstanding, float, revenue, revenuePerShare, revenuePerEmployee, EBITDA, grossProfit, profitMargin, cash, debt, returnOnEquity, returnOnAssets, returnOnCapital, peRatio, peRatioLow, peRatioHigh, priceToSales, priceToBook, shortRatio, costOfRevenue, opeartingRevenue, totalRevenue, opeartingIncome, netIncome, researchAndDevelopment, opeartingExpenses, currentAssets, totalAssets, totalLiabilities, currentCash, currentDebt, totalCash, totalDebt, shareholderEquity, cashChange, cashFlow, operatingGainsLosses, amount, dividendRate, dividendYield As Variant
-    Dim exDate, paymentDate, declaredDate, recordDate As Variant
+    Dim exDate, paymentDate, declaredDate, recordDate, reportDate As Variant
         
         companyName = Json(Dict.Item("A"))("company")("companyName")
         exchange = Json(Dict.Item("A"))("company")("exchange")
@@ -229,7 +229,8 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
         priceToSales = Json(Dict.Item("A"))("stats")("priceToSales")
         priceToBook = Json(Dict.Item("A"))("stats")("priceToBook")
         shortRatio = Json(Dict.Item("A"))("stats")("shortRatio")
-        grossProfit = Json(Dict.Item("A"))("stats")("grossProfit")
+        reportDate = Json(Dict.Item("A"))("financials")("financials")(1)("reportDate")
+        grossProfitQTR = Json(Dict.Item("A"))("financials")("financials")(1)("grossProfit")
         costOfRevenue = Json(Dict.Item("A"))("financials")("financials")(1)("costOfRevenue")
         opeartingRevenue = Json(Dict.Item("A"))("financials")("financials")(1)("opeartingRevenue")
         totalRevenue = Json(Dict.Item("A"))("financials")("financials")(1)("totalRevenue")
@@ -254,140 +255,147 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
         Rng2.Offset(0, 4).Value = industry
         Rng2.Offset(0, 5).Value = CEO
         Rng2.Offset(0, 6).Value = issueType
-    Rng2.Offset(0, 7).Value = Format(latestPrice, "Currency")
-    Rng2.Offset(0, 8).Value = Format(openPrice, "Currency")
-    Rng2.Offset(0, 9).Value = Format(closePrice, "Currency")
-    Rng2.Offset(0, 10).Value = Format(low, "Currency")
-    Rng2.Offset(0, 11).Value = Format(high, "Currency")
-    Rng2.Offset(0, 12).Value = Format(change, "Currency")
-    Rng2.Offset(0, 13).Value = Format(changePercent, "Percent")
-        If changePercent > 0 Then
-            Rng2.Offset(0, 13).Font.ColorIndex = 10
-        ElseIf changePercent < 0 Then
-            Rng2.Offset(0, 13).Font.ColorIndex = 3
-        Else
-            Rng2.Offset(0, 13).Font.ColorIndex = 1
-        End If
-    Rng2.Offset(0, 14).Value = Format(latestVolume, "#,##0")
-    Rng2.Offset(0, 15).Value = Format(avgTotalVolume, "#,##0")
-    Rng2.Offset(0, 16).Value = Format(week52Low, "Currency")
-    Rng2.Offset(0, 17).Value = Format(week52High, "Currency")
-    Rng2.Offset(0, 18).Value = Format(day50MovingAvg, "Currency")
-    Rng2.Offset(0, 19).Value = Format(day200MovingAvg, "Currency")
-    Rng2.Offset(0, 20).Value = Format(day5ChangePercent, "Percent")
-        If day5ChangePercent > 0 Then
-            Rng2.Offset(0, 20).Font.ColorIndex = 10
-        ElseIf day5ChangePercent < 0 Then
-            Rng2.Offset(0, 20).Font.ColorIndex = 3
-        Else
-            Rng2.Offset(0, 20).Font.ColorIndex = 1
-        End If
-    Rng2.Offset(0, 21).Value = Format(month1ChangePercent, "Percent")
-        If month1ChangePercent > 0 Then
-            Rng2.Offset(0, 21).Font.ColorIndex = 10
-        ElseIf month1ChangePercent < 0 Then
-            Rng2.Offset(0, 21).Font.ColorIndex = 3
-        Else
-            Rng2.Offset(0, 21).Font.ColorIndex = 1
-        End If
-    Rng2.Offset(0, 22).Value = Format(month3ChangePercent, "Percent")
-        If month3ChangePercent > 0 Then
-            Rng2.Offset(0, 22).Font.ColorIndex = 10
-        ElseIf month3ChangePercent < 0 Then
-            Rng2.Offset(0, 22).Font.ColorIndex = 3
-        Else
-            Rng2.Offset(0, 22).Font.ColorIndex = 1
-        End If
-    Rng2.Offset(0, 23).Value = Format(month6ChangePercent, "Percent")
-        If month6ChangePercent > 0 Then
-            Rng2.Offset(0, 23).Font.ColorIndex = 10
-        ElseIf month6ChangePercent < 0 Then
-            Rng2.Offset(0, 23).Font.ColorIndex = 3
-        Else
-            Rng2.Offset(0, 23).Font.ColorIndex = 1
-        End If
-    Rng2.Offset(0, 24).Value = Format(ytdChangePercent, "Percent")
-        If ytdChangePercent > 0 Then
-            Rng2.Offset(0, 24).Font.ColorIndex = 10
-        ElseIf ytdChangePercent < 0 Then
-            Rng2.Offset(0, 24).Font.ColorIndex = 3
-        Else
-            Rng2.Offset(0, 24).Font.ColorIndex = 1
-        End If
-    Rng2.Offset(0, 25).Value = Format(year1ChangePercent, "Percent")
-        If year1ChangePercent > 0 Then
-            Rng2.Offset(0, 25).Font.ColorIndex = 10
-        ElseIf year1ChangePercent < 0 Then
-            Rng2.Offset(0, 25).Font.ColorIndex = 3
-        Else
-            Rng2.Offset(0, 25).Font.ColorIndex = 1
-        End If
-    Rng2.Offset(0, 26).Value = Format(year3ChangePercent, "Percent")
-        If year3ChangePercent > 0 Then
-            Rng2.Offset(0, 26).Font.ColorIndex = 10
-        ElseIf year3ChangePercent < 0 Then
-            Rng2.Offset(0, 26).Font.ColorIndex = 3
-        Else
-            Rng2.Offset(0, 26).Font.ColorIndex = 1
-        End If
-    Rng2.Offset(0, 27).Value = Format(year5ChangePercent, "Percent")
-        If year5ChangePercent > 0 Then
-            Rng2.Offset(0, 27).Font.ColorIndex = 10
-        ElseIf year5ChangePercent < 0 Then
-            Rng2.Offset(0, 27).Font.ColorIndex = 3
-        Else
-            Rng2.Offset(0, 27).Font.ColorIndex = 1
-        End If
-    Rng2.Offset(0, 28).Value = Format(beta, "Standard")
-    Rng2.Offset(0, 29).Value = Format(marketcap, "Currency")
-    Rng2.Offset(0, 30).Value = Format(sharesOutstanding, "#,##0")
-    Rng2.Offset(0, 31).Value = Format(float, "#,##0")
-    Rng2.Offset(0, 32).Value = Format(revenue, "Currency")
-    Rng2.Offset(0, 33).Value = Format(revenuePerShare, "Currency")
-    Rng2.Offset(0, 34).Value = Format(revenuePerEmployee, "Currency")
-    Rng2.Offset(0, 35).Value = Format(EBITDA, "Currency")
-    Rng2.Offset(0, 36).Value = Format(grossProfit, "Currency")
-    Rng2.Offset(0, 37).Value = Format(profitMargin, "Currency")
-    Rng2.Offset(0, 38).Value = Format(cash, "Currency")
-    Rng2.Offset(0, 39).Value = Format(debt, "Currency")
-    Rng2.Offset(0, 40).Value = Format(returnOnEquity, "Currency")
-    Rng2.Offset(0, 41).Value = Format(returnOnAssets, "Currency")
-    Rng2.Offset(0, 42).Value = Format(returnOnCapital, "Currency")
-    Rng2.Offset(0, 43).Value = Format(peRatio, "Currency")
-    Rng2.Offset(0, 44).Value = Format(peRatioLow, "Currency")
-    Rng2.Offset(0, 45).Value = Format(peRatioHigh, "Currency")
-    Rng2.Offset(0, 46).Value = Format(priceToSales, "Currency")
-    Rng2.Offset(0, 47).Value = Format(priceToBook, "Currency")
-    Rng2.Offset(0, 48).Value = Format(shortRatio, "Currency")
-    Rng2.Offset(0, 49).Value = Format(grossProfit, "Currency")
-    Rng2.Offset(0, 50).Value = Format(costOfRevenue, "Currency")
-    Rng2.Offset(0, 51).Value = Format(opeartingRevenue, "Currency")
-    Rng2.Offset(0, 52).Value = Format(totalRevenue, "Currency")
-    Rng2.Offset(0, 53).Value = Format(opeartingIncome, "Currency")
-    Rng2.Offset(0, 54).Value = Format(netIncome, "Currency")
-    Rng2.Offset(0, 55).Value = Format(researchAndDevelopment, "Currency")
-    Rng2.Offset(0, 56).Value = Format(opeartingExpenses, "Currency")
-    Rng2.Offset(0, 57).Value = Format(currentAssets, "Currency")
-    Rng2.Offset(0, 58).Value = Format(totalAssets, "Currency")
-    Rng2.Offset(0, 59).Value = Format(totalLiabilities, "Currency")
-    Rng2.Offset(0, 60).Value = Format(currentCash, "Currency")
-    Rng2.Offset(0, 61).Value = Format(currentDebt, "Currency")
-    Rng2.Offset(0, 62).Value = Format(totalCash, "Currency")
-    Rng2.Offset(0, 63).Value = Format(totalDebt, "Currency")
-    Rng2.Offset(0, 64).Value = Format(shareholderEquity, "Currency")
-    Rng2.Offset(0, 65).Value = Format(cashChange, "Currency")
-    Rng2.Offset(0, 66).Value = Format(cashFlow, "Currency")
-    Rng2.Offset(0, 67).Value = Format(operatingGainsLosses, "Currency")
-    Rng2.Offset(0, 68).Value = amount
-    Rng2.Offset(0, 69).Value = dividendType
-    Rng2.Offset(0, 70).Value = dividendRate
-    Rng2.Offset(0, 71).Value = dividendYield
-    Rng2.Offset(0, 72).Value = exDate
-    Rng2.Offset(0, 73).Value = paymentDate
-    Rng2.Offset(0, 74).Value = declaredDate
-    Rng2.Offset(0, 75).Value = recordDate
-    Rng2.Offset(0, 76).Value = qualified
-    Rng2.Offset(1, 0).Select
+        Rng2.Offset(0, 7).Value = Format(latestPrice, "Currency")
+        Rng2.Offset(0, 8).Value = Format(openPrice, "Currency")
+        Rng2.Offset(0, 9).Value = Format(closePrice, "Currency")
+        Rng2.Offset(0, 10).Value = Format(low, "Currency")
+        Rng2.Offset(0, 11).Value = Format(high, "Currency")
+        Rng2.Offset(0, 12).Value = Format(change, "Currency")
+        Rng2.Offset(0, 13).Value = Format(changePercent, "Percent")
+            If changePercent > 0 Then
+                Rng2.Offset(0, 13).Font.ColorIndex = 10
+            ElseIf changePercent < 0 Then
+                Rng2.Offset(0, 13).Font.ColorIndex = 3
+            Else
+                Rng2.Offset(0, 13).Font.ColorIndex = 1
+            End If
+        Rng2.Offset(0, 14).Value = Format(latestVolume, "#,##0")
+        Rng2.Offset(0, 15).Value = Format(avgTotalVolume, "#,##0")
+        Rng2.Offset(0, 16).Value = Format(week52Low, "Currency")
+        Rng2.Offset(0, 17).Value = Format(week52High, "Currency")
+        Rng2.Offset(0, 18).Value = Format(day50MovingAvg, "Currency")
+        Rng2.Offset(0, 19).Value = Format(day200MovingAvg, "Currency")
+        Rng2.Offset(0, 20).Value = Format(day5ChangePercent, "Percent")
+            If day5ChangePercent > 0 Then
+                Rng2.Offset(0, 20).Font.ColorIndex = 10
+            ElseIf day5ChangePercent < 0 Then
+                Rng2.Offset(0, 20).Font.ColorIndex = 3
+            Else
+                Rng2.Offset(0, 20).Font.ColorIndex = 1
+            End If
+        Rng2.Offset(0, 21).Value = Format(month1ChangePercent, "Percent")
+            If month1ChangePercent > 0 Then
+                Rng2.Offset(0, 21).Font.ColorIndex = 10
+            ElseIf month1ChangePercent < 0 Then
+                Rng2.Offset(0, 21).Font.ColorIndex = 3
+            Else
+                Rng2.Offset(0, 21).Font.ColorIndex = 1
+            End If
+        Rng2.Offset(0, 22).Value = Format(month3ChangePercent, "Percent")
+            If month3ChangePercent > 0 Then
+                Rng2.Offset(0, 22).Font.ColorIndex = 10
+            ElseIf month3ChangePercent < 0 Then
+                Rng2.Offset(0, 22).Font.ColorIndex = 3
+            Else
+                Rng2.Offset(0, 22).Font.ColorIndex = 1
+            End If
+        Rng2.Offset(0, 23).Value = Format(month6ChangePercent, "Percent")
+            If month6ChangePercent > 0 Then
+                Rng2.Offset(0, 23).Font.ColorIndex = 10
+            ElseIf month6ChangePercent < 0 Then
+                Rng2.Offset(0, 23).Font.ColorIndex = 3
+            Else
+                Rng2.Offset(0, 23).Font.ColorIndex = 1
+            End If
+        Rng2.Offset(0, 24).Value = Format(ytdChangePercent, "Percent")
+            If ytdChangePercent > 0 Then
+                Rng2.Offset(0, 24).Font.ColorIndex = 10
+            ElseIf ytdChangePercent < 0 Then
+                Rng2.Offset(0, 24).Font.ColorIndex = 3
+            Else
+                Rng2.Offset(0, 24).Font.ColorIndex = 1
+            End If
+        Rng2.Offset(0, 25).Value = Format(year1ChangePercent, "Percent")
+            If year1ChangePercent > 0 Then
+                Rng2.Offset(0, 25).Font.ColorIndex = 10
+            ElseIf year1ChangePercent < 0 Then
+                Rng2.Offset(0, 25).Font.ColorIndex = 3
+            Else
+                Rng2.Offset(0, 25).Font.ColorIndex = 1
+            End If
+        Rng2.Offset(0, 26).Value = Format(year3ChangePercent, "Percent")
+            If year3ChangePercent > 0 Then
+                Rng2.Offset(0, 26).Font.ColorIndex = 10
+            ElseIf year3ChangePercent < 0 Then
+                Rng2.Offset(0, 26).Font.ColorIndex = 3
+            Else
+                Rng2.Offset(0, 26).Font.ColorIndex = 1
+            End If
+        Rng2.Offset(0, 27).Value = Format(year5ChangePercent, "Percent")
+            If year5ChangePercent > 0 Then
+                Rng2.Offset(0, 27).Font.ColorIndex = 10
+            ElseIf year5ChangePercent < 0 Then
+                Rng2.Offset(0, 27).Font.ColorIndex = 3
+            Else
+                Rng2.Offset(0, 27).Font.ColorIndex = 1
+            End If
+        Rng2.Offset(0, 28).Value = Format(beta, "Standard")
+        Rng2.Offset(0, 29).Value = Format(marketcap, "Currency")
+        Rng2.Offset(0, 30).Value = Format(sharesOutstanding, "#,##0")
+        Rng2.Offset(0, 31).Value = Format(float, "#,##0")
+        Rng2.Offset(0, 32).Value = Format(revenue, "Currency")
+        Rng2.Offset(0, 33).Value = Format(revenuePerShare, "Currency")
+        Rng2.Offset(0, 34).Value = Format(revenuePerEmployee, "Currency")
+        Rng2.Offset(0, 35).Value = Format(grossProfit, "Currency")
+        Rng2.Offset(0, 36).Value = Format(profitMargin, "Standard")
+            If profitMargin > 0 Then
+                Rng2.Offset(0, 36).Font.ColorIndex = 10
+            ElseIf profitMargin < 0 Then
+                Rng2.Offset(0, 36).Font.ColorIndex = 3
+            Else
+                Rng2.Offset(0, 36).Font.ColorIndex = 1
+            End If
+        Rng2.Offset(0, 37).Value = Format(EBITDA, "Currency")
+        Rng2.Offset(0, 38).Value = Format(cash, "Currency")
+        Rng2.Offset(0, 39).Value = Format(debt, "Currency")
+        Rng2.Offset(0, 40).Value = Format(returnOnEquity, "Currency")
+        Rng2.Offset(0, 41).Value = Format(returnOnAssets, "Currency")
+        Rng2.Offset(0, 42).Value = Format(returnOnCapital, "Currency")
+        Rng2.Offset(0, 43).Value = Format(peRatio, "Currency")
+        Rng2.Offset(0, 44).Value = Format(peRatioLow, "Currency")
+        Rng2.Offset(0, 45).Value = Format(peRatioHigh, "Currency")
+        Rng2.Offset(0, 46).Value = Format(priceToSales, "Currency")
+        Rng2.Offset(0, 47).Value = Format(priceToBook, "Currency")
+        Rng2.Offset(0, 48).Value = Format(shortRatio, "Currency")
+        Rng2.Offset(0, 49).Value = Format(totalRevenue, "Currency")
+        Rng2.Offset(0, 50).Value = Format(costOfRevenue, "Currency")
+        Rng2.Offset(0, 51).Value = Format(grossProfitQTR, "Currency")
+        Rng2.Offset(0, 52).Value = Format(opeartingRevenue, "Currency")
+        Rng2.Offset(0, 53).Value = Format(opeartingIncome, "Currency")
+        Rng2.Offset(0, 54).Value = Format(netIncome, "Currency")
+        Rng2.Offset(0, 55).Value = Format(researchAndDevelopment, "Currency")
+        Rng2.Offset(0, 56).Value = Format(opeartingExpenses, "Currency")
+        Rng2.Offset(0, 57).Value = Format(currentAssets, "Currency")
+        Rng2.Offset(0, 58).Value = Format(totalAssets, "Currency")
+        Rng2.Offset(0, 59).Value = Format(totalLiabilities, "Currency")
+        Rng2.Offset(0, 60).Value = Format(currentCash, "Currency")
+        Rng2.Offset(0, 61).Value = Format(currentDebt, "Currency")
+        Rng2.Offset(0, 62).Value = Format(totalCash, "Currency")
+        Rng2.Offset(0, 63).Value = Format(totalDebt, "Currency")
+        Rng2.Offset(0, 64).Value = Format(shareholderEquity, "Currency")
+        Rng2.Offset(0, 65).Value = Format(cashChange, "Currency")
+        Rng2.Offset(0, 66).Value = Format(cashFlow, "Currency")
+        Rng2.Offset(0, 67).Value = Format(operatingGainsLosses, "Currency")
+        Rng2.Offset(0, 68).Value = amount
+        Rng2.Offset(0, 69).Value = dividendType
+        Rng2.Offset(0, 70).Value = dividendRate
+        Rng2.Offset(0, 71).Value = dividendYield
+        Rng2.Offset(0, 72).Value = exDate
+        Rng2.Offset(0, 73).Value = paymentDate
+        Rng2.Offset(0, 74).Value = declaredDate
+        Rng2.Offset(0, 75).Value = recordDate
+        Rng2.Offset(0, 76).Value = qualified
+        Rng2.Offset(1, 0).Select
 
 
 End Function
@@ -407,7 +415,7 @@ Range("L1").Value = "High"
 Range("M1").Value = "Change"
 Range("N1").Value = "Change Percent"
 Range("O1").Value = "Latest Volume"
-Range("P1").Value = "Avgtotal Total Volume"
+Range("P1").Value = "Avg Total Volume"
 Range("Q1").Value = "Week 52 Low"
 Range("R1").Value = "Week 52 High"
 Range("S1").Value = "50 Day Moving Avg"
@@ -425,11 +433,11 @@ Range("AD1").Value = "Marketcap"
 Range("AE1").Value = "Shares Outstanding"
 Range("AF1").Value = "Float"
 Range("AG1").Value = "Revenue"
-Range("AH1").Value = "Revenue per Per Share"
-Range("AI1").Value = "Revenue per Per Employee"
-Range("AJ1").Value = "EBITDA"
-Range("AK1").Value = "Gross Profit"
-Range("AL1").Value = "Profit Margin"
+Range("AH1").Value = "Revenue Per Share"
+Range("AI1").Value = "Revenue Per Employee"
+Range("AJ1").Value = "Gross Profit"
+Range("AK1").Value = "Profit Margin"
+Range("AL1").Value = "EBITDA"
 Range("AM1").Value = "Cash"
 Range("AN1").Value = "Debt"
 Range("AO1").Value = "Return On Equity"
@@ -441,10 +449,10 @@ Range("AT1").Value = "P/E Ratio High"
 Range("AU1").Value = "Price To Sales"
 Range("AV1").Value = "Price To Book"
 Range("AW1").Value = "Short Ratio"
-Range("AX1").Value = "Gross Profit"
+Range("AX1").Value = "Total Revenue"
 Range("AY1").Value = "Cost Of Revenue"
-Range("AZ1").Value = "Opearting Revenue"
-Range("BA1").Value = "Total Revenue"
+Range("AZ1").Value = "Gross Profit"
+Range("BA1").Value = "Opearting Revenue"
 Range("BB1").Value = "Opearting Income"
 Range("BC1").Value = "Net Income"
 Range("BD1").Value = "Research and Development"
