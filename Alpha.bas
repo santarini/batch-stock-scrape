@@ -96,7 +96,7 @@ While j <= qtyHundredBatches
     
     'paste the JSON values into spreasheet
     
-    For i = 1 To 100 Step 1
+    For i = 1 To remainder Step 1
         Dict("A") = Rng2.Value
         Call iexTradingJSON(Dict, Rng1, Rng2, Json)
         Set Rng2 = ActiveCell
