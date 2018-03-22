@@ -11,7 +11,7 @@ I don't yet know why it varies so greatly in speed. But ... I'll spend some time
 #### alpha.bas
 Is the current working version of the program and the only thing you really need from this repo.
   
-This script is dependent on a JSON parser. I would reccomend using <a href="https://github.com/VBA-tools/VBA-JSON">Tim Hall's JSON Converter</a>, which I've included in this repo with permission. See the License section below for more details.
+This script is dependent on a JSON parser. I would reccomend using <a href="https://github.com/VBA-tools/VBA-JSON">Tim Hall's JSON Converter</a>, which I've included in this repo with his permission. See the License section below for more details.
 
 Make sure you enable a Microsoft Scripting Runtime and Microsoft Active X Data Object Library.
 
