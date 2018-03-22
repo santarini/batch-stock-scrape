@@ -22,6 +22,7 @@ Case 1
 'Perform this in the background, or not it's totally your choice
 
 Application.ScreenUpdating = False
+Application.DisplayAlerts = False
 
 'define a timer, and start the timer
 
@@ -164,13 +165,21 @@ End If
 
 Cells.Select
 Selection.Columns.AutoFit
-Range("B3").Select
-ActiveWindow.FreezePanes = True
+
+Application.ScreenUpdating = True
+Application.DisplayAlerts = True
+
 Range("A1").Select
+    With ActiveWindow
+        .SplitColumn = 1
+        .SplitRow = 2
+    End With
+ActiveWindow.FreezePanes = True
 
 SecondsElapsed = Round(Timer - StartTime, 2)
 'Notify user in seconds
 Dim tickersPerSec As Single
+
 tickersPerSec = (tickerRangeLen / SecondsElapsed)
   MsgBox "This code ran successfully in " & SecondsElapsed & " seconds" & vbCrLf & "Approximately " & tickersPerSec & " per second", vbInformation
 End Select
@@ -526,5 +535,6 @@ Range("AX1").Value = "Quarter"
 Selection.AutoFill Destination:=Range("AX1:BP1"), Type:=xlFillDefault
 Range("A1:BY1").Select
 Selection.Font.Bold = True
+
 
 End Function
