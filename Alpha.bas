@@ -201,7 +201,7 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
         avgTotalVolume = Json(Dict.Item("A"))("quote")("avgTotalVolume")
         week52Low = Json(Dict.Item("A"))("quote")("week52Low")
         week52High = Json(Dict.Item("A"))("quote")("week52High")
-        latestEPSDate = Json(Dict.Item("A"))("quote")("latestEPSDate")
+        latestEPSDate = Json(Dict.Item("A"))("stats")("latestEPSDate")
         day50MovingAvg = Json(Dict.Item("A"))("stats")("day50MovingAvg")
         day200MovingAvg = Json(Dict.Item("A"))("stats")("day200MovingAvg")
         day5ChangePercent = Json(Dict.Item("A"))("stats")("day5ChangePercent")
@@ -522,5 +522,7 @@ Selection.AutoFill Destination:=Range("AG1:AW1"), Type:=xlFillDefault
 Range("AX1").Select
 Range("AX1").Value = "Quarter"
 Selection.AutoFill Destination:=Range("AX1:BP1"), Type:=xlFillDefault
+Range("A1:BY1").Select
+Selection.Font.Bold = True
 
 End Function
