@@ -164,6 +164,8 @@ End If
 
 Cells.Select
 Selection.Columns.AutoFit
+Range("B3").Select
+ActiveWindow.FreezePanes = True
 Range("A1").Select
 
 SecondsElapsed = Round(Timer - StartTime, 2)
