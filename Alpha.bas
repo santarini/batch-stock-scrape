@@ -507,5 +507,20 @@ Range("A1:BY1").Select
 Selection.Font.Bold = True
 Range("A1").Select
 Selection.EntireRow.Insert
+Range("A1").Select
+Range("A1").Value = "Details"
+Selection.AutoFill Destination:=Range("A1:G1"), Type:=xlFillDefault
+Range("H1").Select
+Range("H1").Value = "Current Quote"
+Selection.AutoFill Destination:=Range("H1:S1"), Type:=xlFillDefault
+Range("T1").Select
+Range("T1").Value = "Historical Quote"
+Selection.AutoFill Destination:=Range("T1:AF1"), Type:=xlFillDefault
+Range("AG1").Select
+Range("AG1").Value = "Annual"
+Selection.AutoFill Destination:=Range("AG1:AW1"), Type:=xlFillDefault
+Range("AX1").Select
+Range("AX1").Value = "Quarter"
+Selection.AutoFill Destination:=Range("AX1:BP1"), Type:=xlFillDefault
 
 End Function
