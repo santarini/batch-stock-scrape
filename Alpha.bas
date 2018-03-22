@@ -3,8 +3,12 @@ Sub stockScrapeAlpha()
 'define ticker range
 
 Dim tickerRange As Range
-Set tickerRange = Application.InputBox(prompt:="Select tickers", Type:=8)
 
+Cells.Find(What:="Ticker", After:=ActiveCell, LookIn:=xlFormulas, LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, MatchCase:=True, SearchFormat:=False).Activate
+Selection.Offset(1, 0).Select
+Range(Selection, Selection.End(xlDown)).Select
+
+Set tickerRange = Selection
 'count the number of cells in tickerRange and store that in an int
 
 Dim tickerRangeLen As Integer
