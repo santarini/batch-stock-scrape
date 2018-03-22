@@ -179,7 +179,7 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
 
     Dim companyName, exchange, sector, industry, CEO, issueType, dividendType As Variant
     Dim latestPrice, openPrice, closePrice, low, high, change, changePercent, latestVolume, avgTotalVolume, week52Low, week52High, day50MovingAvg, day200MovingAvg, day5ChangePercent, month1ChangePercent, month3ChangePercent, month6ChangePercent, ytdChangePercent, year1ChangePercent, year3ChangePercent, year5ChangePercent, beta, marketcap, sharesOutstanding, float, revenue, revenuePerShare, revenuePerEmployee, EBITDA, grossProfit, profitMargin, cash, debt, returnOnEquity, returnOnAssets, returnOnCapital, peRatio, peRatioLow, peRatioHigh, priceToSales, priceToBook, shortRatio, costOfRevenue, opeartingRevenue, totalRevenue, opeartingIncome, netIncome, researchAndDevelopment, opeartingExpenses, currentAssets, totalAssets, totalLiabilities, currentCash, currentDebt, totalCash, totalDebt, shareholderEquity, cashChange, cashFlow, operatingGainsLosses, amount, dividendRate, dividendYield As Variant
-    Dim exDate, paymentDate, declaredDate, recordDate, reportDate, latestTime, website, description As Variant
+    Dim exDate, paymentDate, declaredDate, recordDate, reportDate, latestTime, website, description, latestEPSDate As Variant
         
         companyName = Json(Dict.Item("A"))("company")("companyName")
         website = Json(Dict.Item("A"))("company")("website")
@@ -201,6 +201,7 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
         avgTotalVolume = Json(Dict.Item("A"))("quote")("avgTotalVolume")
         week52Low = Json(Dict.Item("A"))("quote")("week52Low")
         week52High = Json(Dict.Item("A"))("quote")("week52High")
+        latestEPSDate = Json(Dict.Item("A"))("quote")("latestEPSDate")
         day50MovingAvg = Json(Dict.Item("A"))("stats")("day50MovingAvg")
         day200MovingAvg = Json(Dict.Item("A"))("stats")("day200MovingAvg")
         day5ChangePercent = Json(Dict.Item("A"))("stats")("day5ChangePercent")
@@ -398,6 +399,28 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
         Rng2.Offset(0, 74).Value = declaredDate
         Rng2.Offset(0, 75).Value = recordDate
         Rng2.Offset(0, 76).Value = qualified
+        
+        For i = 7 To 18
+            Rng2.Offset(0, i).Select
+            Selection.AddComment
+            Selection.Comment.Visible = False
+            Selection.Comment.Text Text:="Current Quote" & Chr(10) & "As of " & latestTime
+        Next i
+        
+        For i = 32 To 48
+            Rng2.Offset(0, i).Select
+            Selection.AddComment
+            Selection.Comment.Visible = False
+            Selection.Comment.Text Text:="12 Months Ended" & Chr(10) & "As of " & latestEPSDate
+        Next i
+        
+        For i = 49 To 67
+            Rng2.Offset(0, i).Select
+            Selection.AddComment
+            Selection.Comment.Visible = False
+            Selection.Comment.Text Text:="3 Months Ended" & Chr(10) & "As of " & reportDate
+        Next i
+        
         Rng2.Offset(1, 0).Select
 
 
@@ -483,5 +506,6 @@ Range("BY1").Value = "Qualified"
 Range("A1:BY1").Select
 Selection.Font.Bold = True
 Range("A1").Select
+Selection.EntireRow.Insert
 
 End Function
