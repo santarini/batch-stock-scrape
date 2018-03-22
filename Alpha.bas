@@ -167,12 +167,19 @@ If tickerRangeLen < 100 Then
     Next
 End If
 
+'resize some columns
 Cells.Select
 Selection.Columns.AutoFit
+Columns("B:B").Select
+Selection.ColumnWidth = 50
+Columns("F:F").Select
+Selection.ColumnWidth = 30
 
+'turn these things on to properly freeze panes
 Application.ScreenUpdating = True
 Application.DisplayAlerts = True
 
+'freeze panes
 Range("A1").Select
     With ActiveWindow
         .SplitColumn = 1
@@ -181,6 +188,7 @@ Range("A1").Select
 ActiveWindow.FreezePanes = True
 
 SecondsElapsed = Round(Timer - StartTime, 2)
+
 'Notify user in seconds
 Dim tickersPerSec As Single
 
