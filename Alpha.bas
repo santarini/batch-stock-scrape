@@ -256,6 +256,7 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
         priceToSales = Json(Dict.Item("A"))("stats")("priceToSales")
         priceToBook = Json(Dict.Item("A"))("stats")("priceToBook")
         shortRatio = Json(Dict.Item("A"))("stats")("shortRatio")
+    On Error GoTo Handler:
         reportDate = Json(Dict.Item("A"))("financials")("financials")(1)("reportDate")
         totalRevenue = Json(Dict.Item("A"))("financials")("financials")(1)("totalRevenue")
         costOfRevenue = Json(Dict.Item("A"))("financials")("financials")(1)("costOfRevenue")
@@ -276,6 +277,7 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
         cashChange = Json(Dict.Item("A"))("financials")("financials")(1)("cashChange")
         cashFlow = Json(Dict.Item("A"))("financials")("financials")(1)("cashFlow")
         operatingGainsLosses = Json(Dict.Item("A"))("financials")("financials")(1)("operatingGainsLosses")
+   ExitErrorPoint:
         Rng2.Offset(0, 1).Value = companyName
         Rng2.Offset(0, 2).Value = exchange
         Rng2.Offset(0, 3).Value = sector
@@ -446,7 +448,31 @@ Public Function iexTradingJSON(Dict As Dictionary, Rng1 As Range, Rng2 As Range,
         
         Rng2.Offset(1, 0).Select
 
+Exit Function
 
+Handler:
+        reportDate = ""
+        totalRevenue = ""
+        costOfRevenue = ""
+        grossProfitQTR = ""
+        operatingRevenue = ""
+        operatingIncome = ""
+        netIncome = ""
+        researchAndDevelopment = ""
+        operatingExpense = ""
+        currentAssets = ""
+        totalAssets = ""
+        totalLiabilities = ""
+        currentCash = ""
+        currentDebt = ""
+        totalCash = ""
+        totalDebt = ""
+        shareholderEquity = ""
+        cashChange = ""
+        cashFlow = ""
+        operatingGainsLosses = ""
+Resume ExitErrorPoint
+                      
 End Function
 Function createTemplate()
 
