@@ -24,6 +24,7 @@ Here's a list of direct download links by exchange:
   <li><a href="https://www.nasdaq.com/screening/companies-by-name.aspx?letter=0&exchange=nyse&render=download">NYSE</a></li>
   <li><a href="https://www.nasdaq.com/screening/companies-by-name.aspx?letter=0&exchange=nasdaq&render=download">NASDAQ</a></li>
   <li><a href="https://www.nasdaq.com/screening/companies-by-name.aspx?letter=0&exchange=amex&render=download">AMEX</a></li>
+  <li><a href="https://www.nasdaq.com/investing/etfs/etf-finder-results.aspx?download=Yes">ETFs</a></li>
 </ul>
 
 I also have a <a href="https://github.com/santarini/batch-stock-scrape/blob/master/sandp500.csv">S&P 500 csv</a> up here. It may or may not be up-to-date), I haven't spent a lot of time working on error handling, so if you run into a snag using this list it may because the ticker changed or doesn't exist or something.
